@@ -1,8 +1,8 @@
 import type { Plugin } from 'vite';
 import express from 'express';
 import cors from 'cors';
-import { userRoutes } from './routes/user';
-import { dataRoutes } from './routes/data';
+import { userRoutes } from './routes/user.js'; // 👈 这里加上 .js
+import { dataRoutes } from './routes/data.js'; // 👈 这里加上 .js
 
 /**
  * Vite 插件：将 Express API 路由挂载到 Vite dev server 上。
