@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import { userRoutes } from './routes/user.js'; // 👈 这里加上 .js
 import { dataRoutes } from './routes/data.js'; // 👈 这里加上 .js
-import { logger } from '@lark-apaas/client-toolkit-lite';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
@@ -21,5 +20,5 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.listen(PORT, () => {
-  logger.info(`[Server] 奖励打卡后端服务已启动 → 端口 ${PORT}`);
+  console.log(`[Server] 奖励打卡后端服务已启动 → 端口 ${PORT}`);
 });
