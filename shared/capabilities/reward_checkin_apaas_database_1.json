@@ -1,0 +1,139 @@
+{
+  "id": "reward_checkin_apaas_database_1",
+  "pluginKey": "@official-plugins/apaas-data",
+  "pluginVersion": "1.0.0",
+  "name": "奖励打卡应用aPaaS数据库",
+  "description": "为奖励打卡应用提供云端持久化存储，支持存储用户同步码、事项列表、打卡记录、初始余额、消费记录、时间奖励等完整应用数据，支持按同步码查询和更新用户数据。",
+  "icon": "",
+  "paramsSchema": {
+    "properties": {
+      "initial_balance": {
+        "type": "string",
+        "description": "用户的初始奖励余额"
+      },
+      "consumption_records": {
+        "type": "array",
+        "description": "用户的消费记录列表",
+        "items": {
+          "type": "string",
+          "description": "消费记录JSON字符串"
+        }
+      },
+      "time_rewards": {
+        "description": "用户获得的时间奖励列表",
+        "items": {
+          "type": "string",
+          "description": "时间奖励JSON字符串"
+        },
+        "type": "array"
+      },
+      "sync_code": {
+        "type": "string",
+        "description": "用户唯一同步码，用于识别用户身份和查询更新数据"
+      },
+      "task_list": {
+        "type": "array",
+        "description": "用户的待办事项列表",
+        "items": {
+          "type": "string",
+          "description": "事项内容JSON字符串"
+        }
+      },
+      "checkin_records": {
+        "type": "array",
+        "description": "用户的打卡记录列表",
+        "items": {
+          "description": "打卡记录JSON字符串",
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "sync_code"
+    ],
+    "type": "object"
+  },
+  "formValue": {
+    "app": {
+      "description": "奖励打卡应用云端数据存储",
+      "name": "奖励打卡应用",
+      "namespace": "reward_checkin_app",
+      "appID": "reward_checkin_2024"
+    },
+    "object": {
+      "apiAlias": "user_data",
+      "label": "用户数据"
+    },
+    "fields": [
+      {
+        "kind": "string",
+        "tsType": "string",
+        "label": "同步码",
+        "readonly": false,
+        "apiAlias": "sync_code",
+        "kindLabel": "文本",
+        "description": "用户唯一同步码",
+        "required": true,
+        "example": "{{input.sync_code}}"
+      },
+      {
+        "kind": "array",
+        "label": "事项列表",
+        "tsType": "Array<string>",
+        "apiAlias": "task_list",
+        "example": "{{input.task_list}}",
+        "readonly": false,
+        "kindLabel": "数组",
+        "description": "用户待办事项列表",
+        "isArray": true
+      },
+      {
+        "description": "用户历史打卡记录",
+        "isArray": true,
+        "kind": "array",
+        "label": "打卡记录",
+        "readonly": false,
+        "kindLabel": "数组",
+        "tsType": "Array<string>",
+        "apiAlias": "checkin_records",
+        "example": "{{input.checkin_records}}"
+      },
+      {
+        "readonly": false,
+        "tsType": "string",
+        "apiAlias": "initial_balance",
+        "label": "初始余额",
+        "kindLabel": "文本",
+        "description": "用户初始奖励余额",
+        "example": "{{input.initial_balance}}",
+        "kind": "string"
+      },
+      {
+        "kind": "array",
+        "label": "消费记录",
+        "kindLabel": "数组",
+        "isArray": true,
+        "readonly": false,
+        "tsType": "Array<string>",
+        "apiAlias": "consumption_records",
+        "description": "用户消费记录列表",
+        "example": "{{input.consumption_records}}"
+      },
+      {
+        "readonly": false,
+        "kindLabel": "数组",
+        "example": "{{input.time_rewards}}",
+        "kind": "array",
+        "label": "时间奖励",
+        "tsType": "Array<string>",
+        "apiAlias": "time_rewards",
+        "description": "用户获得的时间奖励列表",
+        "isArray": true
+      }
+    ],
+    "banner": "奖励打卡应用用户数据存储"
+  },
+  "createdAt": 1783409564003,
+  "updatedAt": 1783409564003,
+  "createdBy": 7659295449353833460
+}
