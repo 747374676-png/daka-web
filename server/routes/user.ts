@@ -1,6 +1,5 @@
 import { Router, type Request, type Response } from 'express';
 import { userExists, getUserData, createUser } from '../db.js'; // 👈 这里改成 ../db.js
-import { logger } from '@lark-apaas/client-toolkit-lite';
 
 export const userRoutes = Router();
 
@@ -20,7 +19,7 @@ userRoutes.post('/verify', async (req: Request, res: Response) => {
       res.json({ exists: false });
     }
   } catch (e) {
-    logger.error('[user/verify] Error:', String(e));
+    console.error('[user/verify] Error:', String(e));
     res.status(500).json({ error: '服务器内部错误' });
   }
 });
@@ -40,7 +39,7 @@ userRoutes.post('/create', async (req: Request, res: Response) => {
     const data = await createUser(code, initialData);
     res.json({ success: true, data });
   } catch (e) {
-    logger.error('[user/create] Error:', String(e));
+    console.error('[user/create] Error:', String(e));
     res.status(500).json({ error: '服务器内部错误' });
   }
 });
