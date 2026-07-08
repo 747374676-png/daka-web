@@ -1,6 +1,5 @@
 import { Router, type Request, type Response } from 'express';
 import { getUserData, updateUserData } from '../db.js'; // 👈 这里改成 ../db.js
-import { logger } from '@lark-apaas/client-toolkit-lite';
 
 export const dataRoutes = Router();
 
@@ -18,7 +17,7 @@ dataRoutes.get('/:syncCode', async (req: Request, res: Response) => {
     }
     res.json(data);
   } catch (e) {
-    logger.error('[data/get] Error:', String(e));
+    console.error('[data/get] Error:', String(e));
     res.status(500).json({ error: '服务器内部错误' });
   }
 });
@@ -38,7 +37,7 @@ dataRoutes.put('/:syncCode', async (req: Request, res: Response) => {
     }
     res.json({ success: true, data: updated });
   } catch (e) {
-    logger.error('[data/put] Error:', String(e));
+    console.error('[data/put] Error:', String(e));
     res.status(500).json({ error: '服务器内部错误' });
   }
 });
