@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import { userRoutes } from './routes/user';
-import { dataRoutes } from './routes/data';
+import { userRoutes } from './routes/user.js'; // 👈 这里加上 .js
+import { dataRoutes } from './routes/data.js'; // 👈 这里加上 .js
 import { logger } from '@lark-apaas/client-toolkit-lite';
 
 const app = express();
