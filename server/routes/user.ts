@@ -1,5 +1,5 @@
 import { Router, type Request, type Response } from 'express';
-import { userExists, getUserData, createUser } from '../db';
+import { userExists, getUserData, createUser } from '../db.js'; // 👈 这里改成 ../db.js
 import { logger } from '@lark-apaas/client-toolkit-lite';
 
 export const userRoutes = Router();
